@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "874429853705",
+    "firebase_url": "https://bookkeeperfinal.firebaseio.com",
+    "project_id": "bookkeeperfinal",
+    "storage_bucket": "bookkeeperfinal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874429853705:android:1fe87f3b00ea02bb",
+        "android_client_info": {
+          "package_name": "bookkeeper.com.bookkeeper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874429853705-s8sm51b6gpmd34mhbe6o758r3hqosu6q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bookkeeper.com.bookkeeper",
+            "certificate_hash": "30d04281056f68f449ce1519a324912cce82d97c"
+          }
+        },
+        {
+          "client_id": "874429853705-2qm71nttlq8firumiu0g5c8s61c0cn88.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACSNBIlB_EPjwZY9AKNK_oogyPLFLs9-U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874429853705-2qm71nttlq8firumiu0g5c8s61c0cn88.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
