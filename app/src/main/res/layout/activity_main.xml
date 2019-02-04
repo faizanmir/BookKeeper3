@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:focusable="true"
     tools:context=".mainActivity"
     android:background="@android:color/white">
 
@@ -27,34 +30,48 @@
         android:layout_height="50dp"
         app:cardCornerRadius="40dp"
         android:layout_below="@id/textView"
-        app:cardElevation="5dp"
+        app:cardElevation="2dp"
         android:id="@+id/cv">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="20dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/search_image"
-
+                android:src="@drawable/magnify"
                 />
 
             <EditText
                 android:id="@+id/search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:ems="10"
+                android:layout_toEndOf="@id/search_image"
                 android:inputType="textPersonName"
                 android:background="@android:color/transparent"
-                android:padding="5dp"
+                android:padding="0dp"
                 android:layout_margin="10dp"
                 android:hint="Search"
-                android:layout_alignStart="@id/search_image"
+
                 />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cv"
+        android:text="@string/quote1"
+        android:layout_margin="40dp"
+        android:textStyle="italic"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_centerVertical="true"
+        android:id="@+id/quotes" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -75,15 +92,14 @@
         android:layout_marginStart="30dp"
         android:layout_marginBottom="5dp"
         />
-
-
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
+        app:borderWidth="0dp"
         android:id="@+id/add_book"
         android:layout_alignParentEnd="true"
         android:layout_above="@id/recycle"
+        android:backgroundTint="@android:color/white"
         android:layout_margin="16dp"
-        android:src="@drawable/common_full_open_on_phone"
+        android:src="@drawable/book_plus"
         android:layout_height="wrap_content" />
 </RelativeLayout>

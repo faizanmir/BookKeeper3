@@ -2,9 +2,23 @@
     <string name="app_name">BookKeeper</string>
     <string name="title_activity_add">addActivity</string>
     <string name="webid">874429853705-2qm71nttlq8firumiu0g5c8s61c0cn88.apps.googleusercontent.com</string>
-
-
-
+    <string name="quote1">“A room without books is like a body without a soul.” 
+― Marcus Tullius Cicero</string>
+    <string name="quote9">“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.” 
+― Jane Austen, Northanger Abbey</string>
+    <string name="quote2">“Good friends, good books, and a sleepy conscience: this is the ideal life.” 
+― Mark Twain</string>
+    <string name="quote3">“Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten.” 
+― Neil Gaiman, Coraline</string>
+    <string name="quote4">““Outside of a dog, a book is man\'s best friend. Inside of a dog it\'s too dark to read.” 
+― Groucho Marx, The Essential Groucho: Writings For By And About Groucho Marx</string>
+    <string name="quote5">“I have always imagined that Paradise will be a kind of library.”
+― Jorge Luis Borges</string>
+    <string name="quote6">“If you only read the books that everyone else is reading, you can only think what everyone else is thinking.” 
+― Haruki Murakami, Norwegian Wood
+</string>
+    <string name="quote7">“Never trust anyone who has not brought a book with them.” 
+― Lemony Snicket, Horseradish</string>
 
 
 </resources>

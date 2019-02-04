@@ -1,23 +1,18 @@
 package bookkeeper.com.bookkeeper;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-import bookkeeper.com.bookkeeper.BooksDatabase.Book;
-import me.anwarshahriar.calligrapher.Calligrapher;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Random;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import bookkeeper.com.bookkeeper.BooksDatabase.Book;
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class myRecyclerView extends RecyclerView.Adapter<myRecyclerView.viewHolder> {
 
@@ -62,7 +57,6 @@ public class myRecyclerView extends RecyclerView.Adapter<myRecyclerView.viewHold
             textView1=itemView.findViewById(R.id.textbox1);
             textView2=itemView.findViewById(R.id.textbox2);
             imageView = itemView.findViewById(R.id.book_image);
-
 
         }
     }

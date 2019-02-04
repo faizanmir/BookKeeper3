@@ -1,32 +1,38 @@
 package bookkeeper.com.bookkeeper;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.Random;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import bookkeeper.com.bookkeeper.BooksDatabase.Book;
 import bookkeeper.com.bookkeeper.BooksDatabase.BooksDataBase;
 import me.anwarshahriar.calligrapher.Calligrapher;
 
-import java.util.ArrayList;
-
 public class mainActivity extends AppCompatActivity {
-
+    TextView textView_quotes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        int array_quotes[] = {R.string.quote1, R.string.quote2, R.string.quote3, R.string.quote4, R.string.quote5, R.string.quote6, R.string.quote7};
+        Random random = new Random();
+        int z = random.nextInt(array_quotes.length - 1);
+        textView_quotes = findViewById(R.id.quotes);
+        textView_quotes.setText(array_quotes[z]);
         final ArrayList<Book> books = (ArrayList<Book>) BooksDataBase.getInstance(this).getDAO().getBooks();
         final ArrayList<Book>filter_books = new ArrayList<>();
         RecyclerView recyclerView = findViewById(R.id.recycle);
@@ -41,6 +47,8 @@ public class mainActivity extends AppCompatActivity {
         bottomSheetDialog.setContentView(R.layout.input);
 
         EditText search = findViewById(R.id.search);
+
+
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -49,8 +57,13 @@ public class mainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
                 filter_books.clear();
                 if (s.length() > 0) {
+
+                    textView_quotes.setVisibility(View.GONE);
+
                     for (int i = 0; i < books.size(); i++) {
                         if(books.get(i).book.toLowerCase().contains(s.toString().toLowerCase()))
                         filter_books.add(books.get(i));
@@ -62,6 +75,7 @@ public class mainActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    books.clear();
                    books.addAll( (ArrayList<Book>) BooksDataBase.getInstance(mainActivity.this).getDAO().getBooks());
                     obj.notifyDataSetChanged();
                 }
@@ -107,6 +121,12 @@ public class mainActivity extends AppCompatActivity {
 
 
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
     }
 }
