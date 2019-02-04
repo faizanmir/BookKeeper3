@@ -2,18 +2,16 @@ package bookkeeper.com.bookkeeper;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.util.Log;
+import androidx.cardview.widget.CardView;
+
 import android.view.View;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInApi;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
@@ -37,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_login);
         sharedPreferences = getSharedPreferences("loginPrefs" , MODE_PRIVATE);
+        //Using apply we commit the shared preferences and later on with the use of get int we get the value
         if(sharedPreferences.getInt("login_h",9)==1)
         {
             startActivity(new Intent(LoginActivity.this, bookkeeper.com.bookkeeper.mainActivity.class));
