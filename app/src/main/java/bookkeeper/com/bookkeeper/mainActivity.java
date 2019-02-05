@@ -112,7 +112,12 @@ public class mainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText book = bottomSheetDialog.findViewById(R.id.book_name);
+                EditText author = bottomSheetDialog.findViewById(R.id.author);
+                book.setText("");
+                author.setText("");
                 bottomSheetDialog.show();
+
             }
         });
 

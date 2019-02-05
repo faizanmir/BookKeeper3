@@ -5,15 +5,20 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import bookkeeper.com.bookkeeper.BookNotesDatabase.bookQuotes;
 import bookkeeper.com.bookkeeper.BooksDatabase.Book;
+import bookkeeper.com.bookkeeper.BooksDatabase.BooksDataBase;
 import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class myRecyclerView extends RecyclerView.Adapter<myRecyclerView.viewHolder> {
@@ -52,7 +57,7 @@ public class myRecyclerView extends RecyclerView.Adapter<myRecyclerView.viewHold
     }
 
 
-    class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         TextView textView1, textView2;
         ImageView imageView;
         public viewHolder(@NonNull View itemView) {
@@ -62,6 +67,7 @@ public class myRecyclerView extends RecyclerView.Adapter<myRecyclerView.viewHold
             imageView = itemView.findViewById(R.id.book_image);
             context = itemView.getContext();
             itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
         }
 
         @Override
@@ -69,6 +75,25 @@ public class myRecyclerView extends RecyclerView.Adapter<myRecyclerView.viewHold
             Intent intent = new Intent(context, notesActivity.class);
             intent.putExtra("Book_name", abc.get(getAdapterPosition()).book);
             context.startActivity(intent);
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(itemView.getContext());
+            bottomSheetDialog.setContentView(R.layout.delete);
+            bottomSheetDialog.show();
+            Button delete_book = bottomSheetDialog.findViewById(R.id.delete_book_button);
+            delete_book.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    bookQuotes.getInstance(context).getDAO().deleteAllNotesOfBook(abc.get(getAdapterPosition()).book);
+                    BooksDataBase.getInstance(context).getDAO().delete(abc.get(getAdapterPosition()));
+                    abc.remove(getAdapterPosition());
+                    notifyItemRemoved(getAdapterPosition());
+                    bottomSheetDialog.dismiss();
+                }
+            });
+            return true;
         }
     }
 }

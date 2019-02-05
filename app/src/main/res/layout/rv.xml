@@ -34,6 +34,7 @@
                 android:id="@+id/textbox2"
                 android:layout_marginTop="5dp"
                 android:layout_centerHorizontal="true"
+                android:textAlignment="center"
                 />
         </RelativeLayout>
         <RelativeLayout

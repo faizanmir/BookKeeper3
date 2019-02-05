@@ -22,4 +22,9 @@ public interface bookQuotesDAO {
 
     @Query("SELECT * FROM bookQuoteTable WHERE book =(:book_name)")
     public List<bookQuotesTable> getQuotesForThisBook(String book_name);
+
+    @Query("DELETE FROM bookQuoteTable WHERE book =(:book)")
+    public void deleteAllNotesOfBook(String book);
+
+
 }
