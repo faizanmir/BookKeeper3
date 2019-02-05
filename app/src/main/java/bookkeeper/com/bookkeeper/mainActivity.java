@@ -7,12 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,12 +33,17 @@ public class mainActivity extends AppCompatActivity {
         textView_quotes = findViewById(R.id.quotes);
         textView_quotes.setText(array_quotes[z]);
         final ArrayList<Book> books = (ArrayList<Book>) BooksDataBase.getInstance(this).getDAO().getBooks();
+        Collections.reverse(books);
         final ArrayList<Book>filter_books = new ArrayList<>();
+
         RecyclerView recyclerView = findViewById(R.id.recycle);
+
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "fonts/Product Sans Bold.ttf", true);
+
         RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
+
         final myRecyclerView obj = new myRecyclerView(books);
         recyclerView.setAdapter(obj);
 
@@ -47,8 +51,6 @@ public class mainActivity extends AppCompatActivity {
         bottomSheetDialog.setContentView(R.layout.input);
 
         EditText search = findViewById(R.id.search);
-
-
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -62,7 +64,6 @@ public class mainActivity extends AppCompatActivity {
                 filter_books.clear();
                 if (s.length() > 0) {
 
-                    textView_quotes.setVisibility(View.GONE);
 
                     for (int i = 0; i < books.size(); i++) {
                         if(books.get(i).book.toLowerCase().contains(s.toString().toLowerCase()))
@@ -77,6 +78,7 @@ public class mainActivity extends AppCompatActivity {
                 {
                     books.clear();
                    books.addAll( (ArrayList<Book>) BooksDataBase.getInstance(mainActivity.this).getDAO().getBooks());
+                    Collections.reverse(books);
                     obj.notifyDataSetChanged();
                 }
             }
@@ -90,8 +92,7 @@ public class mainActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = findViewById(R.id.add_book);
-
+        Button fab = findViewById(R.id.add_book);
         Button book_Save = bottomSheetDialog.findViewById(R.id.SaveButton);
         book_Save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,15 +104,11 @@ public class mainActivity extends AppCompatActivity {
                 book.author = author_name.getText().toString();
                 books.add(book);
                 BooksDataBase.getInstance(mainActivity.this).getDAO().insert(book);
+                Collections.reverse(books);
                 obj.notifyDataSetChanged();
-                Toast.makeText(mainActivity.this , "Added" ,Toast.LENGTH_LONG).show();
                 bottomSheetDialog.dismiss();
             }
         });
-
-
-
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
